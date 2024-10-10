@@ -11,5 +11,5 @@ def git_branch(branch_name:str) -> str:
     if result.stderr.decode() != "": return result.stderr.decode()
     return result.stdout.decode()
 
-
+#main script
 print(git_branch("tmp2"))
