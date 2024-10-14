@@ -12,8 +12,11 @@ readonly add="add"
 readonly HIDDEN_FILE=".hidden"
 readonly commit_flags="-am"
 readonly push_flags="-u"
+readonly branch_flags="-D"
 
 readonly origin="origin"
+
+readonly main_branch="main" #TODO: read this from .config
 
 function validate_args(){
     echo "validating..."
@@ -66,4 +69,12 @@ function git_push(){
 
 function git_status(){
     ${GIT} ${status}
+}
+
+function delete_branches(){
+    for to_delete in $(git_branch); do
+        if [[ $to_delete != "$main_branch" ]]; then
+            ${GIT} ${branch} ${branch_flags} "${to_delete}"
+        fi
+    done
 }
