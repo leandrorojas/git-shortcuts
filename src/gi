@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source common
+
+MESSAGE=$1
+
+increment_send "${MESSAGE}"
