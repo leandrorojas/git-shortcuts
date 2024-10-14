@@ -4,7 +4,7 @@ source common
 
 if [[ $# -eq 1 ]]; then
     if [ "$1" = "-d" ]; then
-        git_branch
+        delete_branch
     else
         BRANCH_NAME=$1
 
