@@ -12,7 +12,8 @@ readonly pull="pull"
 readonly tag="tag"
 
 readonly HIDDEN_FILE=".hidden"
-readonly commit_flags="-am"
+readonly commit_flags_a="-a"
+readonly commit_flags_m="m"
 readonly push_flags="-u"
 readonly branch_flags="-D"
 readonly tag_flags="-d"
@@ -36,7 +37,8 @@ function git_checkout(){
 }
 
 function git_commit(){
-    ${GIT} ${commit} "${commit_flags}" "${1}"
+    echo ${GIT} ${commit} "${commit_flags_a}""${commit_flags_m}" "${1}"
+    ${GIT} ${commit} "${commit_flags_a}""${commit_flags_m}" "${1}"
 }
 
 function git_push(){

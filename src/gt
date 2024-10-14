@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source common
+
+if [[ $# -eq 2 ]]; then
+    OLD_TAG=$1
+    NEW_TAG=$2
+    tag_copy "$OLD_TAG" "$NEW_TAG"
+    tag_delete "$OLD_TAG"
+    tag_push_deleted "$OLD_TAG"
+    tag_push_all
+fi
