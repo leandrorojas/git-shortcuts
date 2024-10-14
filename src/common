@@ -6,8 +6,11 @@ readonly status="status"
 readonly branch="branch"
 readonly checkout="checkout"
 readonly commit="commit"
+readonly push="push"
 
 readonly HIDDEN_FILE=".hidden"
+readonly commit_flags="-am"
+readonly push_flags="-u origin"
 
 function validate_args(){
     echo "validating..."
@@ -46,5 +49,9 @@ function remove_file(){
 }
 
 function git_commit(){
-    ${GIT} 
+    ${GIT} ${commit} "${commit_flags}" "${1}"
+}
+
+function git_push(){
+    ${GIT} ${push} "${push_flags}" "${1}"
 }
