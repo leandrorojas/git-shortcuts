@@ -1,0 +1,69 @@
+#!/bin/bash
+
+readonly GIT="git"
+
+readonly status="status"
+readonly branch="branch"
+readonly checkout="checkout"
+readonly commit="commit"
+readonly push="push"
+readonly add="add"
+
+readonly HIDDEN_FILE=".hidden"
+readonly commit_flags="-am"
+readonly push_flags="-u"
+
+readonly origin="origin"
+
+function validate_args(){
+    echo "validating..."
+}
+
+function git_branch(){
+    if [[ $# -eq 1 ]]; then
+        ${GIT} ${branch} "${1}"
+    else
+        ${GIT} ${branch}    
+    fi
+}
+
+function create_branch(){
+    git_branch "${1}"
+}
+
+function git_checkout(){
+    ${GIT} ${checkout} "${1}"
+}
+
+function control_file(){
+    if [ ! -f $HIDDEN_FILE ]; then
+        create_file
+    else
+        remove_file
+    fi
+}
+
+function create_file(){
+    echo " " > $HIDDEN_FILE
+    add_file
+}
+
+function remove_file(){
+    rm $HIDDEN_FILE
+}
+
+function add_file(){
+    ${GIT} ${add} $HIDDEN_FILE
+}
+
+function git_commit(){
+    ${GIT} ${commit} "${commit_flags}" "${1}"
+}
+
+function git_push(){
+    ${GIT} ${push} "${push_flags}" "${origin}" "${1}"
+}
+
+function git_status(){
+    ${GIT} ${status}
+}

@@ -1,0 +1,20 @@
+#!/bin/bash
+
+source common
+
+BRANCH_NAME=$1
+
+# * * creates a new branch
+create_branch "$BRANCH_NAME"
+
+# * * checks out the new branch
+git_checkout "$BRANCH_NAME"
+
+# * * makes some update
+control_file
+
+# * * commits the "initial commit"
+git_commit "initial commit"
+
+# * * pushes to the upstream
+git_push "$BRANCH_NAME"
