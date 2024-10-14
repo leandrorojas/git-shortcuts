@@ -36,7 +36,6 @@ function git_checkout(){
 }
 
 function git_commit(){
-    echo ${GIT} ${commit} "${commit_flags}" "${1}"
     ${GIT} ${commit} "${commit_flags}" "${1}"
 }
 
