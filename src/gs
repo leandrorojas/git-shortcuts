@@ -2,4 +2,4 @@
 
 source common
 
-${GIT} ${status}
+git_status
