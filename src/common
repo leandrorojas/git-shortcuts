@@ -81,6 +81,6 @@ function delete_branches(){
 }
 
 function get_main(){
-    ${GIT} ${checkout} ${main_branch}
+    git_checkout ${main_branch}
     ${GIT} ${pull}
 }
