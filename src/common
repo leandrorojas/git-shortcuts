@@ -37,7 +37,6 @@ function git_checkout(){
 }
 
 function git_commit(){
-    echo ${GIT} ${commit} "${commit_flags_a}""${commit_flags_m}" "${1}"
     ${GIT} ${commit} "${commit_flags_a}""${commit_flags_m}" "${1}"
 }
 
@@ -102,4 +101,9 @@ function tag_push_deleted(){
 
 function tag_push_all(){
     ${GIT} ${push} ${tag_push_all_flags}
+}
+
+function increment_send(){
+    ${GIT} ${commit} "${commit_flags_a}""${commit_flags_m}" "${1}"
+    ${GIT} ${push}
 }
