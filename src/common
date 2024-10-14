@@ -7,6 +7,7 @@ readonly branch="branch"
 readonly checkout="checkout"
 readonly commit="commit"
 readonly push="push"
+readonly add="add"
 
 readonly HIDDEN_FILE=".hidden"
 readonly commit_flags="-am"
@@ -42,10 +43,15 @@ function control_file(){
 
 function create_file(){
     echo " " > $HIDDEN_FILE
+    add_file
 }
 
 function remove_file(){
     rm $HIDDEN_FILE
+}
+
+function add_file(){
+    ${GIT} ${add} $HIDDEN_FILE
 }
 
 function git_commit(){
