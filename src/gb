@@ -1,4 +1,17 @@
 #!/bin/bash
 
-[ "$#" -eq 1 ] || die "1 argument required, $# provided"
-echo $1 | grep -E -q '^[0-9]+$' || die "Numeric argument required, $1 provided"
+source common
+
+BRANCH_NAME=$1
+
+# * * creates a new branch
+create_branch "$BRANCH_NAME"
+
+# * * checks out the new branch
+git_checkout "$BRANCH_NAME"
+# * * makes some update
+
+control_file
+
+# * * commits the "initial commit"
+# * * pushes to the upstream

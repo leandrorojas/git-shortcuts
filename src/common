@@ -4,7 +4,47 @@ readonly GIT="git"
 
 readonly status="status"
 readonly branch="branch"
+readonly checkout="checkout"
+readonly commit="commit"
 
-validate_args(){
+readonly HIDDEN_FILE=".hidden"
+
+function validate_args(){
     echo "validating..."
+}
+
+function git_branch(){
+    if [[ $# -eq 1 ]]; then
+        ${GIT} ${branch} "${1}"
+    else
+        ${GIT} ${branch}    
+    fi
+}
+
+function create_branch(){
+    git_branch "${1}"
+}
+
+function git_checkout(){
+    ${GIT} ${checkout} "${1}"
+}
+
+function control_file(){
+    if [ ! -f $HIDDEN_FILE ]; then
+        create_file
+    else
+        remove_file
+    fi
+}
+
+function create_file(){
+    echo " " > $HIDDEN_FILE
+}
+
+function remove_file(){
+    rm $HIDDEN_FILE
+}
+
+function git_commit(){
+    ${GIT} 
 }
