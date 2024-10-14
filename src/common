@@ -1,0 +1,10 @@
+#!/bin/bash
+
+readonly GIT="git"
+
+readonly status="status"
+readonly branch="branch"
+
+validate_args(){
+    echo "validating..."
+}

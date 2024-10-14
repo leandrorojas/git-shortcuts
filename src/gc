@@ -1,0 +1,7 @@
+#!/bin/bash
+
+source common
+
+validate_args
+
+${GIT} ${branch}
