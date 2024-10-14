@@ -8,6 +8,7 @@ readonly checkout="checkout"
 readonly commit="commit"
 readonly push="push"
 readonly add="add"
+readonly pull="pull"
 
 readonly HIDDEN_FILE=".hidden"
 readonly commit_flags="-am"
@@ -77,4 +78,9 @@ function delete_branches(){
             ${GIT} ${branch} ${branch_flags} "${to_delete}"
         fi
     done
+}
+
+function get_main(){
+    ${GIT} ${checkout} ${main_branch}
+    ${GIT} ${pull}
 }
