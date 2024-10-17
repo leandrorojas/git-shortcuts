@@ -117,6 +117,6 @@ function tag_push_all(){
 }
 
 function increment_send(){
-    ${GIT} ${commit} "${commit_flags_a}""${commit_flags_m}" "${1}"
-    ${GIT} ${push}
+    git_commit "${1}"
+    git_push
 }
