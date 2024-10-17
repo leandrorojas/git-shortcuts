@@ -3,21 +3,21 @@ a series of git commands to make use of git a little bit easier
 
 commands:
 * gb <branch_name>
-* * creates a both local and remote branch
+  * creates a both local and remote branch
 * gc "message"
-* * git add all & commit
+  * git add all & commit
 * gi "message"
-* * sends an increment to remote
+  * sends an increment to remote
 * gm
-* * switches to main and pulls latest changes
+  * switches to main and pulls latest changes
 * gp
-* * git push
+  * git push
 * gr
-* * git refresh: WIP
+  * git refresh: WIP
 * gs
-* * git status
+  * git status
 * gt <old_tag> <new_tag> 
-* * renames a tag and pushes to remote
+  * renames a tag and pushes to remote
 
 install
 1. clone into the desired folder (suggestion $HOME/bin/git-shortcuts)
