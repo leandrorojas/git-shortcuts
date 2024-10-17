@@ -1,5 +1,6 @@
 # git-shortcuts
 a series of git commands to make use of git a little bit easier
+some updates to test gr command
 
 commands:
 * gb <branch_name>
