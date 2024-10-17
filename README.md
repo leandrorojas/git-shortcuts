@@ -31,3 +31,14 @@ install
 ```export PATH="$HOME/bin/git-shortcuts/src:$PATH"```
 
 3. verify that you are not using any aliases in your default shell profile that will conflict with the commands
+
+Note: tested on macos
+
+oh-my-zsh
+1. comment the git plugin from ~/.zshrc
+2. do not source your profile file, reload your terminal (close and open)
+3. to ensure the commands are properly working use
+
+```which gb```
+
+it should say something like ```$HOME/bin/git-shortcuts/src/gb``` (where $HOME is your home directory)
