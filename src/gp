@@ -1,5 +1,5 @@
 #!/bin/bash
 
-source ./common
+source common
 
 git_push

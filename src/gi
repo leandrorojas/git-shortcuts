@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./common
+source common
 
 MESSAGE=$1
 
