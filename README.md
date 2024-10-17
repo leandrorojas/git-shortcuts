@@ -2,6 +2,8 @@
 a series of git commands to make use of git a little bit easier
 
 commands:
+* g-
+  * git reset --hard
 * gb <branch_name>
   * creates a both local and remote branch
 * gc "message"
