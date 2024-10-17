@@ -32,6 +32,10 @@ function git_branch(){
     fi
 }
 
+function git_branch_enum(){
+    ${GIT} ${branch} | cut -c 3-
+}
+
 function git_checkout(){
     ${GIT} ${checkout} "${1}"
 }
@@ -75,9 +79,9 @@ function branch_create(){
 }
 
 function branch_delete_all(){
-    for to_delete in $(git_branch); do
+    for to_delete in $(git_branch_enum); do
         if [[ $to_delete != "$main_branch" ]]; then
-            ${GIT} ${branch} ${branch_flags} "${to_delete}"
+            ${GIT} ${branch} ${branch_flags} "$to_delete"
         fi
     done
 }
