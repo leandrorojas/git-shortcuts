@@ -41,6 +41,7 @@ function git_checkout(){
 }
 
 function git_commit(){
+    echo "${1}"
     ${GIT} ${commit} "${commit_flags_a}""${commit_flags_m}" "${1}"
 }
 
