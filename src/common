@@ -28,7 +28,7 @@ function git_branch(){
     if [[ $# -eq 1 ]]; then
         ${GIT} ${branch} "${1}"
     else
-        ${GIT} ${branch}    
+        ${GIT} ${branch}
     fi
 }
 
@@ -48,6 +48,10 @@ function git_status(){
     ${GIT} ${status}
 }
 
+function git_add(){
+    ${GIT} ${add} $HIDDEN_FILE
+}
+
 function file_create_control(){
     if [ ! -f $HIDDEN_FILE ]; then
         file_create
@@ -59,15 +63,11 @@ function file_create_control(){
 #file
 function file_create(){
     echo " " > $HIDDEN_FILE
-    file_add
+    git_add
 }
 
 function file_remove(){
     rm $HIDDEN_FILE
-}
-
-function file_add(){
-    ${GIT} ${add} $HIDDEN_FILE
 }
 
 function branch_create(){
