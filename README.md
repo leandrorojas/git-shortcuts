@@ -42,3 +42,5 @@ oh-my-zsh
 ```which gb```
 
 it should say something like ```$HOME/bin/git-shortcuts/src/gb``` (where $HOME is your home directory)
+
+inspiration taken from https://github.com/shobhitpuri/git-refresh
