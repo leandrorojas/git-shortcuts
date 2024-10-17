@@ -12,8 +12,8 @@ commands:
   * switches to main and pulls latest changes
 * gp
   * git push
-* gr
-  * git refresh: WIP
+* gr <remote_branch>
+  * stashes local changes, pulls <remote_branch> and applies stashed changes
 * gs
   * git status
 * gt <old_tag> <new_tag> 
