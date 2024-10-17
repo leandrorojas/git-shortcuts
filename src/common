@@ -57,7 +57,11 @@ function git_status(){
     ${GIT} ${status}
 }
 
-function git_add(){
+function git_add_all(){
+    ${GIT} ${add} "-A"
+}
+
+function git_add_hidden_file(){
     ${GIT} ${add} $HIDDEN_FILE
 }
 
@@ -72,7 +76,7 @@ function file_create_control(){
 #file
 function file_create(){
     echo " " > $HIDDEN_FILE
-    git_add
+    git_add_hidden_file
 }
 
 function file_remove(){

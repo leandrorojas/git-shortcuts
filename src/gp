@@ -2,5 +2,4 @@
 
 source ./common
 
-git_add_all
-git_commit "${1}"
+git_push
