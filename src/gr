@@ -1,1 +1,19 @@
 #!/bin/bash
+
+source ./common
+
+# Check if params are enough to go ahead.
+remoteBranch=$1
+
+# Find which is your current branch
+if currentBranch=$(get_current_branch); then
+    git_stash
+    git_branch "$remoteBranch"
+    git_checkout "$remoteBranch"
+    git_pull_rebase "$remoteBranch"
+    git_checkout "$currentBranch"
+    git_rebase "$remoteBranch"
+    apply_stash
+else
+    echo ERROR: Cannot find the current branch!
+fi

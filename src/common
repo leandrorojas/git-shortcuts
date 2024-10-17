@@ -10,6 +10,11 @@ readonly push="push"
 readonly add="add"
 readonly pull="pull"
 readonly tag="tag"
+readonly stash="stash"
+readonly rebase="rebase"
+readonly reset="reset"
+
+readonly symbolic_ref="symbolic-ref"
 
 readonly HIDDEN_FILE=".hidden"
 readonly commit_flags_a="-a"
@@ -19,6 +24,8 @@ readonly branch_flags="-D"
 readonly tag_flags="-d"
 readonly tag_push_delete_flags=":refs/tags/"
 readonly tag_push_all_flags="--tags"
+readonly rebase_flags="--rebase"
+readonly reset_flags="--hard"
 
 readonly origin="origin"
 
@@ -61,7 +68,24 @@ function git_add_all(){
     ${GIT} ${add} "-A"
 }
 
-function git_add_hidden_file(){
+function git_stash(){
+    ${GIT} ${stash}
+}
+
+function git_rebase(){
+    ${GIT} ${rebase} "${1}"
+}
+
+function git_pull_rebase(){
+    ${GIT} ${pull} "${rebase_flags}" "${origin}" "${1}"
+}
+
+function git_reset(){
+    ${GIT} ${reset} "${reset_flags}"
+}
+
+#file
+function add_hidden_file(){
     ${GIT} ${add} $HIDDEN_FILE
 }
 
@@ -73,10 +97,9 @@ function file_create_control(){
     fi
 }
 
-#file
 function file_create(){
     echo " " > $HIDDEN_FILE
-    git_add_hidden_file
+    add_hidden_file
 }
 
 function file_remove(){
@@ -119,4 +142,12 @@ function tag_push_all(){
 function increment_send(){
     git_commit "${1}"
     git_push
+}
+
+function get_current_branch(){
+    ${GIT} ${symbolic_ref} --short -q HEAD
+}
+
+function apply_stash(){
+    ${GIT} ${stash} apply
 }
