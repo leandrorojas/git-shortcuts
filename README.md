@@ -4,8 +4,12 @@ a series of git commands to make use of git a little bit easier
 commands:
 * g-
   * git reset --hard
+* gb
+  * list all local branches
 * gb <branch_name>
   * creates a both local and remote branch
+* gb -d
+  * deletes all local branches but "main" and all stale branches on remote (locally)
 * gc "message"
   * git add all & commit
 * gi "message"
