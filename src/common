@@ -13,6 +13,8 @@ readonly tag="tag"
 readonly stash="stash"
 readonly rebase="rebase"
 readonly reset="reset"
+readonly remote"remote"
+readonly prune="prune"
 
 readonly symbolic_ref="symbolic-ref"
 
@@ -116,6 +118,8 @@ function branch_delete_all(){
             ${GIT} ${branch} ${branch_flags} "$to_delete"
         fi
     done
+
+    ${GIT} "${remote}" ${prune} ${origin}
 }
 
 function get_main(){
