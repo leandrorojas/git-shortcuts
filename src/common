@@ -1,97 +1,64 @@
 #!/bin/bash
 
-readonly GIT="git"
-
-readonly status="status"
-readonly branch="branch"
-readonly checkout="checkout"
-readonly commit="commit"
-readonly push="push"
-readonly add="add"
-readonly pull="pull"
-readonly tag="tag"
-readonly stash="stash"
-readonly rebase="rebase"
-readonly reset="reset"
-readonly remote="remote"
-readonly prune="prune"
-readonly fetch="fetch"
-
-readonly symbolic_ref="symbolic-ref"
-
+readonly MAIN_BRANCH="main" #TODO: read this from .config
 readonly HIDDEN_FILE=".hidden"
-readonly commit_flags_a="-a"
-readonly commit_flags_m="m"
-readonly push_flags="-u"
-readonly branch_flags="-D"
-readonly tag_flags="-d"
-readonly tag_push_delete_flags=":refs/tags/"
-readonly tag_push_all_flags="--tags"
-readonly rebase_flags="--rebase"
-readonly reset_flags="--hard"
-readonly fix_flags="rm"
-readonly fetch_flags="--all"
-
-readonly origin="origin"
-
-readonly main_branch="main" #TODO: read this from .config
 
 function git_branch(){
     if [[ $# -eq 1 ]]; then
-        ${GIT} ${branch} "${1}"
+        git branch "${1}"
     else
-        ${GIT} ${branch}
+        git branch
     fi
 }
 
 function git_branch_enum(){
-    ${GIT} ${branch} | cut -c 3-
+    git branch | cut -c 3-
 }
 
 function git_checkout(){
-    ${GIT} ${checkout} "${1}"
+    git checkout "${1}"
 }
 
 function git_commit(){
-    ${GIT} ${commit} "${commit_flags_a}""${commit_flags_m}" \""${1}"\"
+    git commit -am \""${1}"\"
 }
 
 # shellcheck disable=SC2120
 function git_push(){
     if [[ $# -eq 1 ]]; then
-        ${GIT} ${push} "${push_flags}" "${origin}" "${1}"
+        git push -u origin "${1}"
     else
-        ${GIT} ${push}
+        git push
     fi
 }
 
 function git_status(){
-    ${GIT} ${status}
+    git status
 }
 
 function git_add_all(){
-    ${GIT} ${add} "-A"
+    git add "-A"
 }
 
 function git_stash(){
-    ${GIT} ${stash}
+    git stash
 }
 
 function git_rebase(){
-    ${GIT} ${rebase} "${1}"
+    git rebase "${1}"
 }
 
 function git_pull_rebase(){
-    ${GIT} ${pull} "${rebase_flags}" "${origin}" "${1}"
+    git pull --rebase origin "${1}"
 }
 
 function git_reset(){
-    ${GIT} ${reset} "${reset_flags}"
+    git reset --hard
 }
 
 #file
 function add_hidden_file(){
-    ${GIT} ${add} $HIDDEN_FILE
+    git add $HIDDEN_FILE
 }
 
 function file_create_control(){
@@ -117,33 +84,33 @@ function branch_create(){
 
 function branch_delete_all(){
     for to_delete in $(git_branch_enum); do
-        if [[ $to_delete != "$main_branch" ]]; then
-            ${GIT} ${branch} ${branch_flags} "$to_delete"
+        if [[ $to_delete != "$MAIN_BRANCH" ]]; then
+            git branmch -D "$to_delete"
         fi
     done
 
-    ${GIT} "${remote}" ${prune} ${origin}
+    git remote prune origin
 }
 
 function get_main(){
-    git_checkout ${main_branch}
-    ${GIT} ${pull}
+    git_checkout ${MAIN_BRANCH}
+    git pull
 }
 
 function tag_copy(){
-    ${GIT} ${tag} "${1}" "${2}"
+    git tag "${1}" "${2}"
 }
 
 function tag_delete(){
-    ${GIT} ${tag} ${tag_flags} "${1}"
+    git tag -d "${1}"
 }
 
 function tag_push_deleted(){
-    ${GIT} ${push} ${origin} ${tag_push_delete_flags}"${1}"
+    git push origin :refs/tags/"${1}"
 }
 
 function tag_push_all(){
-    ${GIT} ${push} ${tag_push_all_flags}
+    git push --tags
 }
 
 function increment_send(){
@@ -152,24 +119,22 @@ function increment_send(){
 }
 
 function get_current_branch(){
-    ${GIT} ${symbolic_ref} --short -q HEAD
+    git symbolic-ref --short -q HEAD
 }
 
 function apply_stash(){
-    ${GIT} ${stash} apply
+    git stash apply
 }
 
 function get_origin_url(){
-    ${GIT} ls-remote --get-url ${origin}
+    git ls-remote --get-url origin
 }
 
 function fix_branch_fetching(){
-
     for origin_url in $(get_origin_url); do
-        ${GIT} ${remote} ${fix_flags} "${origin_url}"
-        ${GIT} ${remote} ${add} "${origin_url}"
+        git remote rm "${origin_url}"
+        git remote add "${origin_url}"
     done
 
-    ${GIT} ${fetch} ${fetch_flags}
-
+    git fetch --all
 }

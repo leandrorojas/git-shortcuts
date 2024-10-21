@@ -2,6 +2,6 @@
 
 source common
 
-MESSAGE=$1
+commit_message=$1
 
-increment_send "${MESSAGE}"
+increment_send "${commit_message}"
