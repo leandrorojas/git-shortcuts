@@ -2,4 +2,4 @@
 
 source common
 
-git_push
+common::git_push

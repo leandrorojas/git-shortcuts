@@ -2,4 +2,4 @@
 
 source common
 
-get_main
+common::get_main

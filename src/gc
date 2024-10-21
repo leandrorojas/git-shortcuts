@@ -4,5 +4,5 @@ source common
 
 commit_message=$1
 
-git_add_all
-git_commit "${commit_message}"
+common::git_add_all
+common::git_commit "${commit_message}"

@@ -7,13 +7,13 @@ remote_branch=$1
 
 # Find which is your current branch
 if current_branch=$(get_current_branch); then
-    git_stash
-    git_branch "$remote_branch"
-    git_checkout "$remote_branch"
-    git_pull_rebase "$remote_branch"
-    git_checkout "$current_branch"
-    git_rebase "$remote_branch"
-    apply_stash
+    common::git_stash
+    common::git_branch "$remote_branch"
+    common::git_checkout "$remote_branch"
+    common::git_pull_rebase "$remote_branch"
+    common::git_checkout "$current_branch"
+    common::git_rebase "$remote_branch"
+    common::apply_stash
 else
     echo ERROR: Cannot find the current branch!
 fi

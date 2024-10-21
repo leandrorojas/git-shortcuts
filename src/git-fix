@@ -2,4 +2,4 @@
 
 source common
 
-fix_branch_fetching
+common::fix_branch_fetching

@@ -4,4 +4,4 @@ source common
 
 commit_message=$1
 
-increment_send "${commit_message}"
+common::increment_send "${commit_message}"

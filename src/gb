@@ -4,27 +4,27 @@ source common
 
 if [[ $# -eq 1 ]]; then
     if [ "$1" = "-d" ]; then
-        branch_delete_all
+        common::branch_delete_all
     else
         branch_name=$1
 
         # * * creates a new branch
-        branch_create "$branch_name"
+        common::branch_create "$branch_name"
 
         # * * checks out the new branch
-        git_checkout "$branch_name"
+        common::git_checkout "$branch_name"
 
         #TODO: these two lines from above can be replaced with "git checkout -b branch_name"
 
         # * * makes some update
-        file_create_control
+        common::file_create_control
 
         # * * commits the "initial commit"
-        git_commit "initial commit"
+        common::git_commit "initial commit"
 
         # * * pushes to the upstream
-        git_push "$branch_name"
+        common::git_push "$branch_name"
     fi
 else
-    git_branch
+    common::git_branch
 fi
