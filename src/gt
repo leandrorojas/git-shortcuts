@@ -3,10 +3,10 @@
 source common
 
 if [[ $# -eq 2 ]]; then
-    OLD_TAG=$1
-    NEW_TAG=$2
-    tag_copy "$OLD_TAG" "$NEW_TAG"
-    tag_delete "$OLD_TAG"
-    tag_push_deleted "$OLD_TAG"
+    old_tag=$1
+    new_tag=$2
+    tag_copy "$old_tag" "$new_tag"
+    tag_delete "$old_tag"
+    tag_push_deleted "$old_tag"
     tag_push_all
 fi
