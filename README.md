@@ -12,6 +12,8 @@ commands:
   * deletes all local branches but "main" and all stale branches on remote (locally)
 * gc "message"
   * git add all & commit
+* git-fix
+  * removes and adds origin again
 * gi "message"
   * sends an increment to remote
 * gm

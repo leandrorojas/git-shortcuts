@@ -1,0 +1,5 @@
+#!/bin/bash
+
+source common
+
+fix_branch_fetching

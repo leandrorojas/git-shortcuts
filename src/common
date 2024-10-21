@@ -15,6 +15,7 @@ readonly rebase="rebase"
 readonly reset="reset"
 readonly remote"remote"
 readonly prune="prune"
+readonly fetch="fetch"
 
 readonly symbolic_ref="symbolic-ref"
 
@@ -28,6 +29,8 @@ readonly tag_push_delete_flags=":refs/tags/"
 readonly tag_push_all_flags="--tags"
 readonly rebase_flags="--rebase"
 readonly reset_flags="--hard"
+readonly fix_flags="rm"
+readonly fetch_flags="--all"
 
 readonly origin="origin"
 
@@ -154,4 +157,19 @@ function get_current_branch(){
 
 function apply_stash(){
     ${GIT} ${stash} apply
+}
+
+function get_origin_url(){
+    ${GIT} ls-remote --get-url ${origin}
+}
+
+function fix_branch_fetching(){
+
+    for origin_url in $(get_origin_url); do
+        ${GIT} ${remote} ${fix_flags} ${origin_url}
+        ${GIT} ${remote} ${add} ${origin_url}
+    done
+
+    ${GIT} ${fetch} ${fetch_flags}
+
 }
