@@ -166,7 +166,7 @@ function get_origin_url(){
 function fix_branch_fetching(){
 
     for origin_url in $(get_origin_url); do
-        ${GIT} ${remote} ${fix_flags}"${origin_url}"
+        ${GIT} ${remote} ${fix_flags} "${origin_url}"
         ${GIT} ${remote} ${add} "${origin_url}"
     done
 
