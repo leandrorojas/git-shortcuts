@@ -2,17 +2,17 @@
 
 source common.sh
 
+gb_arg=$1
+
 if [[ $# -eq 1 ]]; then
-    if [ "$1" = "-d" ]; then
+    if [ "$gb_arg" = "-d" ]; then
         common::branch_delete_all
     else
-        branch_name=$1
-
         # * * creates a new branch
-        common::branch_create "$branch_name"
+        common::branch_create "$gb_arg"
 
         # * * checks out the new branch
-        common::git_checkout "$branch_name"
+        common::git_checkout "$gb_arg"
 
         #TODO: these two lines from above can be replaced with "git checkout -b branch_name"
 
@@ -23,7 +23,7 @@ if [[ $# -eq 1 ]]; then
         common::git_commit "initial commit"
 
         # * * pushes to the upstream
-        common::git_push "$branch_name"
+        common::git_push "$gb_arg"
     fi
 else
     common::git_branch

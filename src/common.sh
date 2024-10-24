@@ -14,7 +14,8 @@ function file_remove(){
 
 function common::git_branch(){
     if [[ $# -eq 1 ]]; then
-        git branch "${1}"
+        local branch_name=$1
+        git branch "${branch_name}"
     else
         git branch
     fi
@@ -25,7 +26,8 @@ function common::git_branch_enum(){
 }
 
 function common::git_checkout(){
-    git checkout "${1}"
+    local branch_name=$1
+    git checkout "${branch_name}"
 }
 
 function common::git_commit(){
@@ -35,7 +37,8 @@ function common::git_commit(){
 # shellcheck disable=SC2120
 function common::git_push(){
     if [[ $# -eq 1 ]]; then
-        git push -u origin "${1}"
+    local branch_name=$1
+        git push -u origin "${branch_name}"
     else
         git push
     fi
@@ -54,11 +57,13 @@ function common::git_stash(){
 }
 
 function common::git_rebase(){
-    git rebase "${1}"
+    branch_name=$1
+    git rebase "${branch_name}"
 }
 
 function common::git_pull_rebase(){
-    git pull --rebase origin "${1}"
+    branch_name=$1
+    git pull --rebase origin "${branch_name}"
 }
 
 function common::git_reset(){
@@ -79,7 +84,8 @@ function common::file_create_control(){
 }
 
 function common::branch_create(){
-    common::git_branch "${1}"
+    local branch_name=$1
+    common::git_branch "${branch_name}"
 }
 
 function common::branch_delete_all(){
@@ -98,15 +104,19 @@ function common::get_main(){
 }
 
 function common::tag_copy(){
-    git tag "${1}" "${2}"
+    local old_tag=$1
+    local new_tag=$2
+    git tag "${old_tag}" "${new_tag}"
 }
 
 function common::tag_delete(){
-    git tag -d "${1}"
+    local tag_name=$1
+    git tag -d "${tag_name}"
 }
 
 function common::tag_push_deleted(){
-    git push origin :refs/tags/"${1}"
+    local tag_name=$1
+    git push origin :refs/tags/"${tag_name}"
 }
 
 function common::tag_push_all(){
@@ -114,7 +124,8 @@ function common::tag_push_all(){
 }
 
 function common::increment_send(){
-    common::git_commit "${1}"
+    local commit_message=$1
+    common::git_commit "${commit_message}"
     common::git_push
 }
 
