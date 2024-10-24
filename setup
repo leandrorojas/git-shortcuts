@@ -1,1 +1,7 @@
 #!/bin/bash
+
+read -rp  "this will install git-shortcuts, ok? (Y/n)" user_answer
+echo "$user_answer"
+
+# homebrew install
+# /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
