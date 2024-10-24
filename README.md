@@ -1,7 +1,7 @@
 # git-shortcuts
 a series of git commands to make use of git a little bit easier
 
-commands:
+## supported commands
 * g-
   * git reset --hard
 * gb
@@ -29,7 +29,7 @@ commands:
 * gt <old_tag> <new_tag> 
   * renames a tag and pushes to remote
 
-install
+## install
 1. clone into the desired folder (suggestion $HOME/bin/git-shortcuts)
 
 ```git clone https://github.com/leandrorojas/git-shortcuts.git $HOME/bin/git-shortcuts```
@@ -46,7 +46,7 @@ install
 
 Note: tested on macos
 
-oh-my-zsh
+### oh-my-zsh
 1. comment the git plugin from ~/.zshrc
 2. do not source your profile file, reload your terminal (close and open)
 3. to ensure the commands are properly working use
@@ -55,6 +55,6 @@ oh-my-zsh
 
 it should say something like ```$HOME/bin/git-shortcuts/src/gb``` (where $HOME is your home directory)
 
-inspiration taken from:
+### inspiration taken from:
 * https://github.com/shobhitpuri/git-refresh
 * sheel styling: https://google.github.io/styleguide/shellguide.html
