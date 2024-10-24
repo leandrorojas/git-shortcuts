@@ -24,6 +24,8 @@ commands:
   * stashes local changes, pulls <remote_branch> and applies stashed changes
 * gs
   * git status
+* gt <tag_name>
+  * creates a new tag with <tag_name>
 * gt <old_tag> <new_tag> 
   * renames a tag and pushes to remote
 
