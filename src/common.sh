@@ -123,6 +123,16 @@ function common::tag_push_all(){
     git push --tags
 }
 
+function common::tag_push(){
+    local tag_name=$1
+    git push origin tag "${tag_name}"
+}
+
+function common::tag_create(){
+    local tag_name=$1
+    git tag "${tag_name}" ${MAIN_BRANCH}
+}
+
 function common::increment_send(){
     local commit_message=$1
     common::git_commit "${commit_message}"
