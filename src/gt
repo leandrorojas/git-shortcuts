@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source common.sh
+source ./common.sh
 
 if [[ $# -eq 2 ]]; then
     old_tag=$1
@@ -9,4 +9,8 @@ if [[ $# -eq 2 ]]; then
     common::tag_delete "$old_tag"
     common::tag_push_deleted "$old_tag"
     common::tag_push_all
+elif [[ $# -eq 1 ]]; then
+    tag_name=$1
+    common::tag_create "$tag_name"
+    common::tag_push "$tag_name"
 fi
