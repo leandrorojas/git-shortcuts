@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source common
+source common.sh
 
 # Check if params are enough to go ahead.
 remote_branch=$1
