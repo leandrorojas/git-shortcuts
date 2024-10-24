@@ -3,6 +3,15 @@
 readonly MAIN_BRANCH="main" #TODO: read this from .config
 readonly HIDDEN_FILE=".hidden"
 
+function file_create(){
+    echo " " > $HIDDEN_FILE
+    add_hidden_file
+}
+
+function file_remove(){
+    rm $HIDDEN_FILE
+}
+
 function common::git_branch(){
     if [[ $# -eq 1 ]]; then
         git branch "${1}"
@@ -69,21 +78,12 @@ function common::file_create_control(){
     fi
 }
 
-function common::file_create(){
-    echo " " > $HIDDEN_FILE
-    add_hidden_file
-}
-
-function common::file_remove(){
-    rm $HIDDEN_FILE
-}
-
 function common::branch_create(){
-    git_branch "${1}"
+    common::git_branch "${1}"
 }
 
 function common::branch_delete_all(){
-    for to_delete in $(git_branch_enum); do
+    for to_delete in $(common::git_branch_enum); do
         if [[ $to_delete != "$MAIN_BRANCH" ]]; then
             git branmch -D "$to_delete"
         fi
@@ -93,7 +93,7 @@ function common::branch_delete_all(){
 }
 
 function common::get_main(){
-    git_checkout ${MAIN_BRANCH}
+    common::git_checkout ${MAIN_BRANCH}
     git pull
 }
 
@@ -114,8 +114,8 @@ function common::tag_push_all(){
 }
 
 function common::increment_send(){
-    git_commit "${1}"
-    git_push
+    common::git_commit "${1}"
+    common::git_push
 }
 
 function common::get_current_branch(){
