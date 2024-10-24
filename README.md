@@ -34,11 +34,15 @@ install
 
 ```git clone https://github.com/leandrorojas/git-shortcuts.git $HOME/bin/git-shortcuts```
 
-2. edit your default shell profile and add the following at the end:
+2. checkout the latest release
+
+ ```git checkout v0.1.0```
+
+3. edit your default shell profile and add the following at the end:
 
 ```export PATH="$HOME/bin/git-shortcuts/src:$PATH"```
 
-3. verify that you are not using any aliases in your default shell profile that will conflict with the commands
+4. verify that you are not using any aliases in your default shell profile that will conflict with the commands
 
 Note: tested on macos
 
