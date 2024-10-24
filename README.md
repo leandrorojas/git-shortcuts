@@ -25,7 +25,7 @@ a series of git commands to make use of git a little bit easier
 * gs
   * git status
 * gt <tag_name>
-  * creates a new tag with <tag_name>
+  * creates a new tag and pushes to remote
 * gt <old_tag> <new_tag> 
   * renames a tag and pushes to remote
 
