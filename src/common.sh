@@ -75,7 +75,7 @@ function common::add_hidden_file(){
     git add $HIDDEN_FILE
 }
 
-function common::file_create_control(){
+function common::toggle_control_file(){
     if [ ! -f $HIDDEN_FILE ]; then
         file_create
     else

@@ -17,7 +17,7 @@ if [[ $# -eq 1 ]]; then
         #TODO: these two lines from above can be replaced with "git checkout -b branch_name"
 
         # * * makes some update
-        common::file_create_control
+        common::toggle_control_file
 
         # * * commits the "initial commit"
         common::git_commit "initial commit"
