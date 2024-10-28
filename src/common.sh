@@ -1,6 +1,7 @@
 #!/bin/bash
 
-readonly MAIN_BRANCH="main" #TODO: read this from .config
+source config
+
 readonly HIDDEN_FILE=".hidden"
 
 function file_create(){
@@ -90,7 +91,7 @@ function common::branch_create(){
 
 function common::branch_delete_all(){
     for to_delete in $(common::git_branch_enum); do
-        if [[ $to_delete != "$MAIN_BRANCH" ]]; then
+        if [[ $to_delete != "$(config::main_branch)" ]]; then
             git branmch -D "$to_delete"
         fi
     done
@@ -99,7 +100,7 @@ function common::branch_delete_all(){
 }
 
 function common::get_main(){
-    common::git_checkout ${MAIN_BRANCH}
+    common::git_checkout "$(config::main_branch)"
     git pull
 }
 
@@ -130,7 +131,7 @@ function common::tag_push(){
 
 function common::tag_create(){
     local tag_name=$1
-    git tag "${tag_name}" ${MAIN_BRANCH}
+    git tag "${tag_name}" "$(config::main_branch)"
 }
 
 function common::increment_send(){
