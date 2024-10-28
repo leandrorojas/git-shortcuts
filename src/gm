@@ -1,5 +1,5 @@
 #!/bin/bash
 
-source ./common.sh
+source common.sh
 
 common::get_main
