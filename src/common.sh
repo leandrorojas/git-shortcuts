@@ -92,7 +92,7 @@ function common::branch_create(){
 function common::branch_delete_all(){
     for to_delete in $(common::git_branch_enum); do
         if [[ $to_delete != "$(config::main_branch)" ]]; then
-            git branmch -D "$to_delete"
+            git branch -D "$to_delete"
         fi
     done
 
